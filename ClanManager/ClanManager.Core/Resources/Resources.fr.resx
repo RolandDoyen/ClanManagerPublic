@@ -1,0 +1,480 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="Active_Clans" xml:space="preserve">
+    <value>Clans Actifs</value>
+  </data>
+  <data name="All_Clans" xml:space="preserve">
+    <value>Tous les Clans</value>
+  </data>
+  <data name="Back_Home" xml:space="preserve">
+    <value>Retour à l'accueil</value>
+  </data>
+  <data name="Button_Activate" xml:space="preserve">
+    <value>Activer</value>
+  </data>
+  <data name="Button_Ban" xml:space="preserve">
+    <value>Bannir</value>
+  </data>
+  <data name="Button_Change_Role" xml:space="preserve">
+    <value>Changer de rôle</value>
+  </data>
+  <data name="Button_Create" xml:space="preserve">
+    <value>Créer</value>
+  </data>
+  <data name="Button_Deactivate" xml:space="preserve">
+    <value>Désactiver</value>
+  </data>
+  <data name="Button_Login" xml:space="preserve">
+    <value>Se connecter</value>
+  </data>
+  <data name="Button_UnBan" xml:space="preserve">
+    <value>Dé-bannir</value>
+  </data>
+  <data name="Clan_Details" xml:space="preserve">
+    <value>Détails du Clan</value>
+  </data>
+  <data name="Create_Clan" xml:space="preserve">
+    <value>Créer Clan</value>
+  </data>
+  <data name="Description" xml:space="preserve">
+    <value>Description</value>
+  </data>
+  <data name="Enter_Clan_Description" xml:space="preserve">
+    <value>Entrez une description pour le Clan</value>
+  </data>
+  <data name="Enter_Clan_Name" xml:space="preserve">
+    <value>Entrez le nom du Clan</value>
+  </data>
+  <data name="Enter_Clan_Tag" xml:space="preserve">
+    <value>Entrez le TAG du Clan</value>
+  </data>
+  <data name="Enter_Password" xml:space="preserve">
+    <value>Entre votre mot de passe</value>
+  </data>
+  <data name="Enter_User_Email" xml:space="preserve">
+    <value>Entrez votre email</value>
+  </data>
+  <data name="Error" xml:space="preserve">
+    <value>Une erreur s’est produite lors du traitement de votre requête.</value>
+  </data>
+  <data name="Error404_1" xml:space="preserve">
+    <value>Oups ! La page que vous cherchez n’existe pas.</value>
+  </data>
+  <data name="Error404_2" xml:space="preserve">
+    <value>Il se peut que le lien soit brisé ou que la page ait été déplacée.</value>
+  </data>
+  <data name="Error500_1" xml:space="preserve">
+    <value>Une erreur interne est survenue.</value>
+  </data>
+  <data name="Error500_2" xml:space="preserve">
+    <value>Nous travaillons à la résoudre. Veuillez réessayer plus tard.</value>
+  </data>
+  <data name="Error_404" xml:space="preserve">
+    <value>Page non trouvée</value>
+  </data>
+  <data name="Error_UserAlreadyExistsException" xml:space="preserve">
+    <value>L'utilisateur existe déjà.</value>
+  </data>
+  <data name="Join" xml:space="preserve">
+    <value>Rejoindre</value>
+  </data>
+  <data name="Leader" xml:space="preserve">
+    <value>Chef</value>
+  </data>
+  <data name="Name" xml:space="preserve">
+    <value>Nom</value>
+  </data>
+  <data name="No_Clan_Available" xml:space="preserve">
+    <value>Pas de clans disponible.</value>
+  </data>
+  <data name="No_Users_Available" xml:space="preserve">
+    <value>Pas d'utilisateurs disponible.</value>
+  </data>
+  <data name="Password" xml:space="preserve">
+    <value>Mot de passe</value>
+  </data>
+  <data name="Quit" xml:space="preserve">
+    <value>Quitter</value>
+  </data>
+  <data name="Register" xml:space="preserve">
+    <value>S'enregistrer</value>
+  </data>
+  <data name="Tag" xml:space="preserve">
+    <value>Tag</value>
+  </data>
+  <data name="User_Details" xml:space="preserve">
+    <value>Détails de l'utilisateur</value>
+  </data>
+  <data name="User_Email" xml:space="preserve">
+    <value>Email</value>
+  </data>
+  <data name="User_SuperAdmin_Role_Info" xml:space="preserve">
+    <value>SuperAdmin</value>
+  </data>
+  <data name="Error_User_Create_Controller" xml:space="preserve">
+    <value>Erreur lors de la création du compte.</value>
+  </data>
+  <data name="Error_UserNotFoundException" xml:space="preserve">
+    <value>Utilisateur pas trouvé.</value>
+  </data>
+  <data name="Error_User_Detail_Controller" xml:space="preserve">
+    <value>Erreur lors de la récupération des détails de l'utilisateur.</value>
+  </data>
+  <data name="Error_PasswordValidationException" xml:space="preserve">
+    <value>Mot de passe incorrect.</value>
+  </data>
+  <data name="Error_User_Login_Controller" xml:space="preserve">
+    <value>Erreur lors de la connexion.</value>
+  </data>
+  <data name="Error_User_ChangeRole_Controller" xml:space="preserve">
+    <value>Erreur lors du changement de Rôle de l'utilisateur.</value>
+  </data>
+  <data name="Error_RoleChangeException_SuperAdmin" xml:space="preserve">
+    <value>Impossible de changer le rôle de SuperAdmin.</value>
+  </data>
+  <data name="Error_User_ToggleBan_Controller" xml:space="preserve">
+    <value>Erreur lors du ToggleBan de l'utilisateur.</value>
+  </data>
+  <data name="Error_RoleChangeException_Invalid_Role" xml:space="preserve">
+    <value>Rôle spécifié invalide.</value>
+  </data>
+  <data name="Error_UserEmailNotFoundException" xml:space="preserve">
+    <value>Email pas trouvé.</value>
+  </data>
+  <data name="Error_RoleChangeException_To_SuperAdmin" xml:space="preserve">
+    <value>Impossible de changer le rôle de l'utilisateur en SuperAdmin.</value>
+  </data>
+  <data name="Error_RoleChangeException_OwnRole" xml:space="preserve">
+    <value>Impossible de changer son propre rôle.</value>
+  </data>
+  <data name="Error_User_List_Controller" xml:space="preserve">
+    <value>Erreur lors du chargement de la liste des utilisateurs.</value>
+  </data>
+  <data name="Error_500" xml:space="preserve">
+    <value>Erreur interne du serveur</value>
+  </data>
+  <data name="Error_Admin_ResetDB" xml:space="preserve">
+    <value>Erreur lors du reset de la base de données.</value>
+  </data>
+  <data name="Success_Admin_ResetDB" xml:space="preserve">
+    <value>Reset de la base de donnée effectuée avec succès.</value>
+  </data>
+  <data name="User_IsBanned" xml:space="preserve">
+    <value>Vous êtes banni.</value>
+  </data>
+  <data name="Error_NoSessionUserException" xml:space="preserve">
+    <value>Pas d'utilisateur en session.</value>
+  </data>
+  <data name="Index_UserSide" xml:space="preserve">
+    <value>Côté utilisateur</value>
+  </data>
+  <data name="Index_Title" xml:space="preserve">
+    <value>Gestionnaire de Clans</value>
+  </data>
+  <data name="Index_UserSide_Admin" xml:space="preserve">
+    <value>Les &lt;strong&gt;Admins&lt;/strong&gt; ont des privilèges pour gérer les utilisateurs et leurs rôles.</value>
+  </data>
+  <data name="Index_ClanSide" xml:space="preserve">
+    <value>Côté clan</value>
+  </data>
+  <data name="Index_ClanSide_You" xml:space="preserve">
+    <value>Vous pouvez &lt;strong&gt;créer, éditer et supprimer des clans&lt;/strong&gt;.</value>
+  </data>
+  <data name="Index_ClanSide_Users" xml:space="preserve">
+    <value>Les utilisateurs peuvent &lt;strong&gt;rejoindre ou quitter des clans&lt;/strong&gt; selon leurs préférences.</value>
+  </data>
+  <data name="Index_ClanSide_Leaders" xml:space="preserve">
+    <value>Les &lt;strong&gt;leaders de clan&lt;/strong&gt; ont des privilèges pour gérer les membres de leur clan.</value>
+  </data>
+  <data name="Index_TestAccounts" xml:space="preserve">
+    <value>Comptes de test</value>
+  </data>
+  <data name="Index_Doc" xml:space="preserve">
+    <value>Documentation du projet</value>
+  </data>
+  <data name="Index_Doc_Txt" xml:space="preserve">
+    <value>Les classes &lt;strong&gt;UserBLL&lt;/strong&gt; et &lt;strong&gt;UserController&lt;/strong&gt; incluent un exemple de documentation complète avec gestion d’erreurs, rôles et comportements métier.</value>
+  </data>
+  <data name="Index_Attention" xml:space="preserve">
+    <value>Attention !</value>
+  </data>
+  <data name="Index_Attention_Text" xml:space="preserve">
+    <value>Un bouton permet de réinitialiser la base de données en cas de problème avec les données. À utiliser avec prudence.</value>
+  </data>
+  <data name="Index_Attention_Reset" xml:space="preserve">
+    <value>RESET DATABASE</value>
+  </data>
+  <data name="Error_ClanAlreadyExistsException" xml:space="preserve">
+    <value>Un clan avec le même Nom et Tag existe déjà.</value>
+  </data>
+  <data name="Error_Clan_Create_Controller" xml:space="preserve">
+    <value>Erreur lors de la création du Clan.</value>
+  </data>
+  <data name="Error_ClanNotFoundException" xml:space="preserve">
+    <value>Clan pas trouvé.</value>
+  </data>
+  <data name="Error_Clan_Detail_Controller" xml:space="preserve">
+    <value>Erreur lors de la récupération des détails du clan.</value>
+  </data>
+  <data name="Error_Clan_List_Controller" xml:space="preserve">
+    <value>Erreur lors du chargement de la liste des clans.</value>
+  </data>
+  <data name="Error_MemberAlreadyInClanException" xml:space="preserve">
+    <value>Déjà membre du clan.</value>
+  </data>
+  <data name="Error_Clan_ToggleActive_Controller" xml:space="preserve">
+    <value>Erreur lors de ToggleActive du Clan.</value>
+  </data>
+  <data name="Error_Clan_Join_Controller" xml:space="preserve">
+    <value>Erreur pour rejoindre le clan.</value>
+  </data>
+  <data name="Button_DeleteClan" xml:space="preserve">
+    <value>Supprimer le clan</value>
+  </data>
+  <data name="Error_ToggleBanException_Self" xml:space="preserve">
+    <value>Impossible de vous (un)ban vous-même.</value>
+  </data>
+  <data name="Error_MemberNotFoundException" xml:space="preserve">
+    <value>Membre du clan pas trouvé.</value>
+  </data>
+  <data name="Error_WrongRoleException" xml:space="preserve">
+    <value>Vous n'avez pas un Role  vous permettant d'effectuer cette action.</value>
+  </data>
+  <data name="Error_ClanLeaderRemovalException" xml:space="preserve">
+    <value>Un Leader de Clan ne peut pas être enlevé.</value>
+  </data>
+  <data name="Error_SessionUserNotFoundException" xml:space="preserve">
+    <value>Utilisateur en session pas trouvé.</value>
+  </data>
+  <data name="Error_ToggleBanException_ClanLeader" xml:space="preserve">
+    <value>Impossible de ban un Clan Leader.</value>
+  </data>
+  <data name="Error_ToggleBanException_SuperAdmin" xml:space="preserve">
+    <value>Impossible de ban SuperAdmin.</value>
+  </data>
+  <data name="Error_ToggleBanException_AdminByAdmin" xml:space="preserve">
+    <value>Votre Role ne vous permet pas de changer le Role de cet utilisateur.</value>
+  </data>
+  <data name="Error_NotClanLeaderException" xml:space="preserve">
+    <value>Seul le Clan Leader peut supprimer le Clan.</value>
+  </data>
+  <data name="Success_User_Create_Controller" xml:space="preserve">
+    <value>Compte créé avec succès.</value>
+  </data>
+  <data name="Success_User_Login_Controller" xml:space="preserve">
+    <value>Connecté avec succès.</value>
+  </data>
+  <data name="Success_User_Logout_Controller" xml:space="preserve">
+    <value>Déconnecté avec succès.</value>
+  </data>
+  <data name="Success_User_ChangeRole_Controller" xml:space="preserve">
+    <value>Rôle changé avec succès.</value>
+  </data>
+  <data name="Success_User_ToggleBan_Controller" xml:space="preserve">
+    <value>ToggleBan effectué avec succès.</value>
+  </data>
+  <data name="Success_Clan_Create_Controller" xml:space="preserve">
+    <value>Clan créé avec succès.</value>
+  </data>
+  <data name="Success_Clan_ToggleActive_Controller" xml:space="preserve">
+    <value>ToggleActive effectué avec succès.</value>
+  </data>
+  <data name="Success_Clan_Join_Controller" xml:space="preserve">
+    <value>Clan rejoint avec succès.</value>
+  </data>
+  <data name="Success_Clan_RemoveMember_Controller" xml:space="preserve">
+    <value>Membre retiré avec succès du Clan.</value>
+  </data>
+  <data name="Success_Clan_Delete_Controller" xml:space="preserve">
+    <value>Clan supprimé avec succès.</value>
+  </data>
+  <data name="Error_Clan_RemoveMember_Controller" xml:space="preserve">
+    <value>Erreur lors de l'éviction du Membre du Clan.</value>
+  </data>
+  <data name="Error_Clan_Delete_Controller" xml:space="preserve">
+    <value>Erreur lors de la suppression du Clan.</value>
+  </data>
+  <data name="Button_Remove" xml:space="preserve">
+    <value>ENLEVER</value>
+  </data>
+  <data name="Error_SessionUserMemberNotFoundException" xml:space="preserve">
+    <value>Le Membre de l'utilisateur en session n'a pas été trouvé.</value>
+  </data>
+  <data name="Success_Clan_ChangeMemberRole_Controller" xml:space="preserve">
+    <value>Changement de Rôle du Membre de Clan effectué avec succès.</value>
+  </data>
+  <data name="Error_CannotChangeSameRoleException" xml:space="preserve">
+    <value>Impossible de change le Rôle de Clan d'un Membre avec le même Clan Rôle.</value>
+  </data>
+  <data name="Error_CannotChangeOwnRoleException" xml:space="preserve">
+    <value>Impossible de change son propre Rôle de Clan.</value>
+  </data>
+  <data name="Error_RoleChangeException_Invalid_ClanRole" xml:space="preserve">
+    <value>Rôle de Clan spécifié invalide.</value>
+  </data>
+  <data name="Error_Clan_ChangeMemberRole_Controller" xml:space="preserve">
+    <value>Erreur lors du changement de Clan Role du Membre.</value>
+  </data>
+  <data name="Success_Clan_RemoveSelf_Controller" xml:space="preserve">
+    <value>Vous avez quitté le clan avec succès.</value>
+  </data>
+  <data name="Error_ClanInactiveException" xml:space="preserve">
+    <value>Impossible de rejoindre un Clan Inactif.</value>
+  </data>
+  <data name="Index_OtherAccounts_Text" xml:space="preserve">
+    <value>Vous pouvez également utiliser le nom avant &lt;strong&gt;@example.com&lt;/strong&gt;  pour chaque utilisateur, et utiliser ce même nom comme mot de passe.</value>
+  </data>
+  <data name="MyClans" xml:space="preserve">
+    <value>Mes Clans</value>
+  </data>
+  <data name="Button_Edit" xml:space="preserve">
+    <value>Modifier</value>
+  </data>
+  <data name="Button_Save" xml:space="preserve">
+    <value>Sauvegarder</value>
+  </data>
+  <data name="Button_Cancel" xml:space="preserve">
+    <value>Annuler</value>
+  </data>
+  <data name="Error_Clan_UpdateDescription_Controller" xml:space="preserve">
+    <value>Erreur lors de la mise-à-jour de la Description du Clan.</value>
+  </data>
+  <data name="Index_Description" xml:space="preserve">
+    <value>Bienvenue sur mon application de gestion de clans. Elle permet d’organiser des groupes, gérer les membres et définir différents niveaux d’accès.</value>
+  </data>
+  <data name="Index_Main_Features" xml:space="preserve">
+    <value>Fonctionnalités principales</value>
+  </data>
+  <data name="Index_UserSide_Connection" xml:space="preserve">
+    <value>Connexion et utilisation du site avec différents rôles.</value>
+  </data>
+  <data name="Users" xml:space="preserve">
+    <value>Utilisateurs</value>
+  </data>
+  <data name="Logout" xml:space="preserve">
+    <value>Se déconnecter</value>
+  </data>
+  <data name="Login" xml:space="preserve">
+    <value>Se connecter</value>
+  </data>
+  <data name="No_Leader_Found" xml:space="preserve">
+    <value>Pas de Leader trouvé</value>
+  </data>
+</root>
