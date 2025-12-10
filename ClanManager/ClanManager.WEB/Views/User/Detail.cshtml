@@ -1,0 +1,86 @@
+﻿@model ClanManager.WEB.Models.User.UserDetailViewModel
+@using ClanManager.Core
+@using ClanManager.Core.Resources
+
+@{
+    ViewData["Title"] = "User Details";
+}
+
+@if (TempData["ErrorMessage"] != null)
+{
+    <div class="alert alert-danger">
+        @TempData["ErrorMessage"]
+    </div>
+}
+@if (TempData["SuccessMessage"] != null)
+{
+    <div class="alert alert-success">
+        @TempData["SuccessMessage"]
+    </div>
+}
+
+<div class="container mt-5 d-flex justify-content-center">
+    <div asp-validation-summary="ModelOnly" class="alert alert-danger"></div>
+
+    <div class="card shadow-lg rounded-3 user-detail-card">
+        <div class="card-header detail-text">
+            <h2 class="mb-0 fw-bold text-center text-white">@Resources.User_Details</h2>
+        </div>
+        <div class="card-body">
+            <p class="mb-2">
+                <strong>@Resources.User_Email:</strong> <span class="text-primary">@Model.Email</span>
+            </p>
+        </div>
+
+        @if (Model.IsUserSuperAdmin)
+        {
+            <div class="alert alert-info m-3" role="alert">
+                @Resources.User_SuperAdmin_Role_Info
+            </div>
+        }
+        else if (Model.CanManageUsers && !Model.IsOwnProfile)
+        {
+            <form asp-action="ChangeRole" asp-controller="User" method="post">
+                <input type="hidden" asp-for="Id" />
+
+                <div class="card-footer d-flex justify-content-between align-items-center">
+                    <select name="newRole" class="form-select w-auto">
+                        @foreach (var role in Enum.GetValues(typeof(Role)).Cast<Role>())
+                        {
+                            if (role == Role.SuperAdmin)
+                            {
+                                continue;
+                            }
+
+                            <option value="@role" selected="@(role == Model.Role)">@role</option>
+                        }
+                    </select>
+
+                    <button type="submit" class="btn btn-warning">
+                        @Resources.Button_Change_Role
+                    </button>
+                </div>
+            </form>
+
+            @if (Model.CanBanUser)
+            {
+                <form asp-action="ToggleBan" asp-controller="User" method="post">
+                    <input type="hidden" asp-for="Id" />
+
+                    <div class="card-footer d-flex justify-content-center align-items-center">
+                        <button type="submit" class="btn btn-danger">
+                            @if (!Model.IsBanned)
+                            {
+                                @Resources.Button_Ban
+                            }
+                            else
+                            {
+                                @Resources.Button_UnBan
+                            }
+                        </button>
+                    </div>
+                </form>
+            }
+        }
+    </div>
+</div>

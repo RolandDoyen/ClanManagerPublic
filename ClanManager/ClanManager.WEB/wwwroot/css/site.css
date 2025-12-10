@@ -1,0 +1,153 @@
+html {
+    font-size: 0.875rem;
+}
+
+.btn:focus,
+.btn:active:focus,
+.btn-link.nav-link:focus,
+.form-control:focus,
+.form-check-input:focus {
+    box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
+}
+
+html {
+    position: relative;
+    min-height: 100%;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    margin: 3rem;
+    margin-top: 1.5rem;
+    line-height: 1.6;
+    color: #333;
+}
+
+h1 {
+    margin-bottom: 0.7rem;
+}
+
+h2 {
+    margin-top: 2rem;
+    color: #444;
+}
+
+ul {
+    margin-left: 1.5rem;
+}
+
+.section {
+    margin-bottom: 2rem;
+}
+
+.warning {
+    color: #b30000;
+    font-weight: bold;
+}
+
+.my-form {
+    max-width: 25rem;
+    margin: auto;
+}
+
+.language-switch {
+    min-width: 0;
+    width: auto;
+}
+
+.user-detail-card {
+    max-width: 37.5rem;
+}
+
+.clan-detail-card {
+    min-width: 22rem;
+    max-width: 22rem;
+}
+
+.detail-text {
+    background-color: #0d6efd;
+    padding-bottom: 3rem;
+}
+
+.clan-description {
+    white-space: pre-wrap;
+}
+
+.clan-members {
+    min-width: 28rem;
+}
+
+.clan-member-email {
+    display: inline-block;
+    min-width: 19rem;
+    max-width: 19rem;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.clan-member-role {
+    width: 7.5rem;
+}
+
+.change-role {
+    white-space: nowrap;
+}
+
+
+
+@media (min-width: 48rem) {
+    html {
+        font-size: 1rem;
+    }
+}
+
+@media (max-width: 37.5rem) {
+
+    body {
+        margin: 6vw;
+        margin-top: 4vw;
+    }
+
+    h1 {
+        font-size: 1.6rem;
+    }
+
+    h2 {
+        font-size: 1.2rem;
+        margin-top: 1.5rem;
+    }
+
+    ul {
+        margin-left: 1rem;
+    }
+
+    .my-form {
+        max-width: 100%;
+        width: 100%;
+    }
+
+    .user-detail-card,
+    .clan-detail-card,
+    .clan-members {
+        max-width: 100%;
+        min-width: 0;
+        width: 100%;
+    }
+
+    .clan-member-email {
+        max-width: 100%;
+        min-width: 0;
+        display: block;
+        margin-bottom: 0.5rem;
+    }
+
+    .clan-member-role {
+        width: auto;
+        margin-bottom: 0.5rem;
+    }
+
+    .detail-text {
+        padding-bottom: 2rem;
+    }
+}

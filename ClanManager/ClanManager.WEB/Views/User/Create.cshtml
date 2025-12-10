@@ -1,0 +1,33 @@
+﻿@model ClanManager.WEB.Models.User.UserFormViewModel
+@using ClanManager.Core.Resources
+
+@{
+    ViewData["Title"] = "User Create";
+}
+
+<form asp-action="Create" method="post" class="p-4 border rounded shadow-sm bg-light my-form">
+    <h3 class="mb-4 text-center">@Resources.Register</h3>
+
+    <div asp-validation-summary="ModelOnly" class="alert alert-danger"></div>
+
+    <div class="mb-3">
+        <label asp-for="Email" class="form-label">@Resources.User_Email</label>
+        <input asp-for="Email" class="form-control" placeholder="@Resources.Enter_User_Email" />
+        <span asp-validation-for="Email" class="text-danger mt-1"></span>
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="Password" class="form-label">@Resources.Password</label>
+        <div class="input-group">
+            <input asp-for="Password" class="form-control" type="password" placeholder="@Resources.Enter_Password" id="passwordInput" />
+            <button type="button" class="btn btn-outline-secondary" onclick="togglePassword()">
+                <i class="bi bi-eye" id="toggleIcon"></i>
+            </button>
+        </div>
+        <span asp-validation-for="Password" class="text-danger mt-1"></span>
+    </div>
+
+    <div class="d-grid">
+        <button type="submit" class="btn btn-primary btn-lg">@Resources.Button_Create</button>
+    </div>
+</form>

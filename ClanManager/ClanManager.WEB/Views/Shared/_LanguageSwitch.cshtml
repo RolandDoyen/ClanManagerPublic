@@ -1,0 +1,15 @@
+﻿@inject IHttpContextAccessor HttpContextAccessor
+
+<div class="dropdown">
+    <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown">
+        @Thread.CurrentThread.CurrentUICulture.TwoLetterISOLanguageName.ToUpper()
+    </button>
+    <ul class="dropdown-menu language-switch">
+        <li>
+            <a class="dropdown-item" href="@Url.Action("SetCulture", "Culture", new { culture = "en", returnUrl = HttpContextAccessor.HttpContext.Request.Path + HttpContextAccessor.HttpContext.Request.QueryString })">EN</a>
+        </li>
+        <li>
+            <a class="dropdown-item" href="@Url.Action("SetCulture", "Culture", new { culture = "fr", returnUrl = HttpContextAccessor.HttpContext.Request.Path + HttpContextAccessor.HttpContext.Request.QueryString })">FR</a>
+        </li>
+    </ul>
+</div>

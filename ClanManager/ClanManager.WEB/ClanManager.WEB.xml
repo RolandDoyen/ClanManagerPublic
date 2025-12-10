@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>ClanManager.WEB</name>
+    </assembly>
+    <members>
+        <member name="M:ClanManager.WEB.Controllers.UserController.Create(ClanManager.WEB.Models.User.UserViewModel)">
+            <summary>
+            Creates a new user
+            </summary>
+            <param name="model">User data</param>
+            <returns>Redirects to clan list on success</returns>
+        </member>
+    </members>
+</doc>
