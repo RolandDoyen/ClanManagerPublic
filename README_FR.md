@@ -1,258 +1,134 @@
-## ClanManager
-ClanManager est une application web ASP.NET Core MVC permettant de gérer des clans et leurs membres, avec gestion des rôles et authentification simple
+# ClanManager
+ClanManager est une application web ASP.NET Core MVC robuste conçue pour la gestion des clans et de leurs membres. Elle intègre une gestion avancée des rôles, une authentification par session et une architecture en couches pour garantir la scalabilité et la maintenabilité.
 
-## Table des matières
+> **Note :** Ce dépôt public est une version finalisée du projet destinée à mon portfolio. Le développement et les pipelines CI/CD vers Azure sont gérés via un dépôt privé, ce qui explique l'historique simplifié des commits ici.
+
+## 📌 Table des matières
 - [ClanManager](#clanmanager)
-- [Table des matières](#table-des-matières)
-- [Technologies](#technologies)
-- [Architecture](#architecture)
-- [Couche BLL](#couche-bll)
-- [Exceptions principales de la BLL](#exceptions-principales-de-la-bll)
-- [Couche DAL](#couche-dal)
-- [Installation et exécution](#installation-et-exécution)
-- [Configuration](#configuration)
-- [Structure du projet](#structure-du-projet)
-- [Fonctionnalités](#fonctionnalités)
-- [Gestion des erreurs et logs](#gestion-des-erreurs-et-logs)
-- [Bonnes pratiques et remarques](#bonnes-pratiques-et-remarques)
-- [Améliorations et évolutions possibles](#améliorations-et-évolutions-possibles)
+  - [📌 Table des matières](#-table-des-matières)
+  - [🚀 Stack Technique](#-stack-technique)
+  - [🏛️ Architecture \& Philosophie](#️-architecture--philosophie)
+  - [📂 Structure du projet](#-structure-du-projet)
+  - [⚙️ BLL \& Exceptions personnalisées](#️-bll--exceptions-personnalisées)
+  - [✨ Fonctionnalités](#-fonctionnalités)
+  - [🔐 Sécurité \& Logs](#-sécurité--logs)
+  - [🚀 Déploiement](#-déploiement)
+  - [⚙️ Installation \& Configuration locale](#️-installation--configuration-locale)
+  - [🚀 Évolutions futures](#-évolutions-futures)
 
-## Technologies
-- Framework : ASP.NET Core 8 MVC
-- ORM : Entity Framework Core
-- Mapping DTO ↔ ViewModel : AutoMapper
-- Logging : Serilog
-- Base de données : SQL Server
-- Authentification et sessions : Session-based
-- Frontend : Razor Views, Bootstrap 5
 
-## Architecture
-L’architecture suit le pattern MVC avec une couche BLL (Business Logic Layer) et une DAL (Data Access Layer)
+## 🚀 Stack Technique
+- **Framework :** ASP.NET Core 8 MVC
+- **ORM & Données :** Entity Framework Core avec SQL Server
+- **Mapping :** AutoMapper (DTO ↔ ViewModel et Entité ↔ DTO)
+- **Logging :** Serilog avec rotation quotidienne des fichiers
+- **Authentification :** Basée sur les sessions avec hachage des mots de passe via BCrypt
+- **Frontend :** Razor Views, Bootstrap 5, et CSS3
+
+
+## 🏛️ Architecture & Philosophie
+Le projet suit une **Architecture en Couches** stricte afin de découpler la logique métier de la présentation et de l'accès aux données :
 
 ```html
-  Client (Razor Views)
-        ↕ Data binding / ViewModels
-  Controller (Web)
-        ↕ AutoMapper / Model mapping
-  BLL (Business Logic Layer)
-        ↕ Services, Exceptions, DTOs
-  DAL (Data Access Layer)
-        ↕ DataContext / DAO
-  Database (SQL Server)
+Client (Razor Views)
+       ↕ Liaison de données / ViewModels
+Controller (Couche Web)
+       ↕ AutoMapper / Mapping des modèles
+BLL (Business Logic Layer)
+       ↕ Services, Exceptions, DTOs
+DAL (Data Access Layer)
+       ↕ DataContext / DAO
+Database (SQL Server)
 ```
 
-## Couche BLL
-- Contient la logique métier.
-- Expose des méthodes asynchrones (CreateAsync, GetByIdAsync, ToggleBanAsync, etc.)
-- Utilise DTOs pour la communication avec les controllers
-- Gère les exceptions spécifiques (UserNotFoundException, UserAlreadyExistsException, RoleChangeException, etc.)
+- **BLL** : Encapsule toutes les règles métier et la validation. Elle expose des méthodes asynchrones et utilise des exceptions spécifiques pour communiquer avec les contrôleurs.
+- **DAL** : Gère la persistance des données en utilisant la logique du pattern Repository via EF Core.
 
-## Exceptions principales de la BLL
-1. Les exceptions métiers principales de la BLL sont :
-- `UserNotFoundException` : l’utilisateur demandé n’existe pas
-- `UserAlreadyExistsException` : tentative de création d’un utilisateur déjà existant
-- `PasswordValidationException` : mot de passe invalide
-- `RoleChangeException` : violation des règles de changement de rôle
-- `ClanNotFoundException` : le clan demandé n’existe pas
-- `MemberNotFoundException` : un membre spécifique n’est pas trouvé dans un clan
-- `WrongRoleException` : l’utilisateur courant n’a pas le rôle requis pour l’action
 
-2. Objectif de ces exceptions
-- Encapsuler les règles métier de manière claire.
-- Éviter les retours d’erreurs génériques.
-- Permettre aux controllers d’adapter la réponse (message TempData, redirection, code HTTP, log).
-- Faciliter le débogage via Serilog.
+## 📂 Structure du projet
+La solution est divisée en quatre projets principaux :
 
-## Couche DAL
-- Utilise Entity Framework Core.
-- Contient DataContext et les entités User, Clan, ClanMember.
+- **BLL (Business Logic Layer)** :
+  - `BLL/` : Services de base (UserBLL, ClanBLL).
+  - `Exceptions/` : Exceptions métier personnalisées.
+  - `Profiles/` : Configurations de mapping pour les DTOs.
+- **Core** :
+  - `Resources/` : Support multilingue (FR/EN).
+  - `Enums.cs` : Énumérations partagées.
+- **DAL (Data Access Layer)** :
+  - `DAO/` : Entités de la base de données (User, Clan, Member).
+  - `DataContext.cs` : Contexte EF Core et migrations.
+- **WEB (Presentation Layer)** :
+  - `Attributes/` : Filtres de sécurité personnalisés (`AuthorizeRole`, `CheckBan`).
+  - `Controllers/` : Orchestrateurs gérant les requêtes et les TempData.
+  - `Services/` : Gestion des sessions et utilitaires d'infrastructure.
 
-## Installation et exécution
-1. Cloner le repository :
-```html
-git clone https://github.com/RolandDoyen/ClanManagerPublic.git
-cd ClanManager
-```
 
-2. Restaurer les packages NuGet :
-```html
-dotnet restore
-```
+## ⚙️ BLL & Exceptions personnalisées
+Au lieu de codes d'erreur génériques, la BLL utilise des exceptions de haut niveau pour garantir la clarté du code :
 
-3. Configurer la base de données dans appsettings.json :
-```html
-"ConnectionStrings": {
-  "DefaultConnection": "Server=SERVERNAME;Database=ClanManager;Trusted_Connection=True;TrustServerCertificate=True;"
-}
-```
+**Exceptions clés :**
+- `UserNotFoundException` / `ClanNotFoundException` : Ressource manquante.
+- `UserAlreadyExistsException` : Prévention des doublons.
+- `PasswordValidationException` : Application des règles de sécurité des mots de passe.
+- `RoleChangeException` : Violation de la hiérarchie ou des règles métier.
+- `WrongRoleException` : Tentative d'action non autorisée.
 
-4. Appliquer les migrations :
-```html
-dotnet ef database update
-```
+Cela permet aux contrôleurs de capturer des erreurs spécifiques et de fournir un retour utilisateur pertinent via `TempData`.
 
-5. Lancer l’application :
-```html
-dotnet run
-```
 
-6. Accéder à l’application :
-```html
-https://localhost:5001/
-```
+## ✨ Fonctionnalités
+**👤 Gestion des utilisateurs**
+- Création de compte, Connexion/Déconnexion.
+- **Outils Admin** : Bannir/Débannir des utilisateurs et gestion globale des rôles.
+**🛡️ Gestion des clans**
+- Création, liste et consultation des informations détaillées des clans.
+- Flux d'adhésion (rejoindre/quitter) avec gestion des membres basée sur les rôles au sein du clan.
+- Possibilité d'activer/désactiver des clans et de mettre à jour les descriptions.
 
-## Configuration
-- Logger (Serilog) : logs dans Logs/log-.log avec rotation journalière. Niveaux : Information (défaut), Fatal (Microsoft/System)
-- Sessions : Timeout 30 min, HTTP only. Stocke UserId, UserEmail, UserRole
-- Localization : support EN/FR, langue par défaut EN
 
-## Structure du projet
-- BLL
-  - BLL
-    - UserBLL.cs
-    - ClanBLL.cs
-  - DTO
-    - ClanDTO.cs
-    - ClanMemberContextDTO.cs
-    - ClanMemberDTO.cs
-    - ClanUserContextDTO.cs
-    - UserContextDTO.cs
-    - UserDTO.cs
-  - Exceptions
-    - PasswordValidationException.cs
-    - UserAlreadyExistsException.cs
-    - UserNotFoundException.cs
-    - RoleChangeException.cs
-    - Etc...
-  - Interfaces
-    - IClanBLL.cs
-    - IUserBLL.cs
-  - Profiles
-    - ClanProfile.cs
-    - UserProfile.cs
-  - Seed
-    - DataSeeder.cs
-  - Services
-    - DatabaseService.cs
-- Core
-  - Resources
-    - Resources.en.resx
-    - Resources.fr.resx
-    - Resources.resx
-  - Enums.cs
-- DAL
-  - DAO
-    - Clan.cs
-    - ClanMember.cs
-    - User.cs
-  - Migrations
-    - 20251204191635_V1.cs
-    - DataContextModelSnapshot.cs
-  - DataContext.cs
-- WEB
-  - Attributes
-    - AuthorizeRoleAttribute.cs
-    - SessionAuthorizeAttribute.cs
-    - Etc...
-  - Controllers
-    - AdminController.cs
-    - BaseController.cs
-    - ClanController.cs
-    - CultureController.cs
-    - HomeController.cs
-    - UserController.cs
-  - Logs
-    - Contient les logs
-  - Models
-    - Clan
-      - ClanViewModel.cs
-      - ClanListViewModel.cs
-      - ClanMemberViewModel.cs
-    - User
-      - UserDetailViewModel.cs
-      - UserFormViewModel.cs
-      - UserListViewModel.cs
-    - ErrorViewModel.cs
-  - Profiles
-    - ClanProfile.cs
-    - UserProfile.cs
-  - Services
-    - Interfaces
-      - ISessionService.cs
-    - SessionService.cs
-  - Views
-    - Clan
-      - Create.cshtml
-      - Detail.cshtml
-      - List.cshtml
-    - Home
-      - Index.cshtml
-    - Shared
-      - _LanguageSwitch.cshtml
-      - _Layout.cshtml
-      - _ValidationScriptsPartial.cshtml
-      - Error.cshtml
-      - Error404.cshtml
-      - Error500.cshtml
-    - User
-      - Create.cshtml
-      - Login.cshtml
-      - Detail.cshtml
-      - List.cshtml
-    - _ViewImports.cshtml
-    - _ViewStart.cshtml
-  - appsettings.json
-  - Program.cs
+## 🔐 Sécurité & Logs
+- **Attributs personnalisés** :
+  - `[SessionAuthorize]` : Vérifie l'existence d'une session valide.
+  - `[AuthorizeRole]` : Restreint l'accès selon les rôles système (SuperAdmin, Admin, Utilisateur).
+  - `[CheckBan]` : Empêche les utilisateurs bannis d'effectuer des actions.
+- **Logging** : Serilog suit toutes les opérations critiques et les erreurs dans le répertoire `Logs/` pour le débogage et l'audit.
 
-## Fonctionnalités
-1. Utilisateurs
-- Création de compte (Create)
-- Login / Logout (Login, Logout)
-- Gestion des rôles (ChangeRole)
-- (Dé)ban d’utilisateurs (ToggleBan)
-- Validation des emails et mots de passe
 
-2. Clans
-- Création de clan (Create)
-- Liste de clans actifs ou tous (List)
-- Détail d’un clan (Detail)
-- Rejoindre / Quitter un clan (Join, Quit)
-- Gestion des rôles des membres (ChangeMemberRole)
-- Activer / désactiver un clan (ToggleActive)
-- Modification de la description d'un Clan (UpdateDescription)
+## 🚀 Déploiement
+- **Plateforme** : Hébergé sur **Azure App Service (Windows/Linux)**.
+- **CI/CD** : Déploiement entièrement automatisé via **GitHub Actions** (déclenché au push) pour une intégration continue.
 
-3. Sécurité
-- Filtrage par rôle (AuthorizeRole attribute)
-- Vérification des sessions (SessionAuthorize attribute, avec option allowPublic)
-- Vérification des bans (CheckBan attribute)
-- Session-based pour l’authentification
-- Hashing des mots de passe via BCrypt
 
-## Gestion des erreurs et logs
-- Exceptions métier capturées dans la BLL : UserNotFoundException, UserAlreadyExistsException, RoleChangeException, etc.
-- Controllers gèrent les exceptions pour afficher des messages clairs ou rediriger l’utilisateur
-- TempData pour messages post-redirect :
-  ```html
-  TempData["ErrorMessage"] = "User not found.";
-  ```
-- Dans les vues :
-  ```html
-  @if (TempData["ErrorMessage"] != null)
-  {
-      <div class="alert alert-danger">@TempData["ErrorMessage"]</div>
-  }
+## ⚙️ Installation & Configuration locale
+**Prérequis**
+* **SDK .NET 8**
+* **SQL Server** (LocalDB ou Express)
+
+**Étapes**
+1. **Cloner le dépôt :**
+  ```bash
+  git clone https://github.com/RolandDoyen/ClanManagerPublic.git
+  cd ClanManager
   ```
 
-## Bonnes pratiques et remarques
-- BLL = logique métier + validation + exceptions spécifiques
-- Controller = orchestrateur (appel BLL, mapping DTO ↔ ViewModel, sessions, messages TempData)
-- AutoMapper pour mapper DTO ↔ ViewModel et Entitiy ↔ DTO
-- Logger toujours utilisé pour les actions importantes et les erreurs
+2. **Restaurer les packages NuGet :**
+  ```bash
+  dotnet restore
+  ```
 
-## Améliorations et évolutions possibles
-- Unit Tests : Ajout de tests unitaires simples pour couvrir les cas principaux
-- Gestion des clans : Historique des activités (join, quit, kick), notifications internes
-- Gestion des utilisateurs : Activité récente, historique bans/désactivations
-- Interface / UX : Confirmation des actions destructrices, notifications, tooltips, tableaux interactifs, responsive design
-- Architecture / Qualité du code : Centralisation permissions, système global d’erreurs
-- Extensions possibles : Messagerie interne, événements pour clans, API REST externe, multiples jeux par clan
+3. **Configurer la base de données :**
+Mettez à jour la chaîne `ConnectionStrings` dans `appsettings.json` avec le nom de votre serveur.
+
+4. **Mettre à jour la base de données et lancer :**
+  ```bash
+  dotnet ef database update --project DAL --startup-project WEB
+  dotnet run --project WEB
+  ```
+
+
+## 🚀 Évolutions futures
+- **Tests Unitaires** : Implémentation de tests XUnit pour couvrir les services de la BLL.
+- **Système de Notifications** : Alertes en temps réel pour les invitations ou exclusions de clan.
+- **Améliorations UX** : Ajout de tableaux interactifs et de fenêtres de confirmation pour les actions destructives.
+- **Extension API** : Création d'une API REST pour permettre l'intégration d'une application mobile.

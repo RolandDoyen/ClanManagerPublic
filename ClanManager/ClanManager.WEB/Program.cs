@@ -9,6 +9,7 @@ using Microsoft.AspNetCore.Localization;
 using Microsoft.EntityFrameworkCore;
 using Serilog;
 using System.Globalization;
+using Microsoft.ApplicationInsights.AspNetCore;
 
 try
 {
@@ -56,6 +57,8 @@ try
     // Logger
     builder.Host.UseSerilog();
 
+    // Application Insights
+    builder.Services.AddApplicationInsightsTelemetry();
 
     var app = builder.Build();
 

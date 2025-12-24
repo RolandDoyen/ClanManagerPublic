@@ -7,6 +7,7 @@ using ClanManager.Core.Resources;
 using ClanManager.DAL;
 using ClanManager.DAL.DAO;
 using Microsoft.EntityFrameworkCore;
+using System.Security.Cryptography.X509Certificates;
 
 namespace ClanManager.BLL.BLL
 {
@@ -204,9 +205,12 @@ namespace ClanManager.BLL.BLL
             if (user == null)
                 throw new UserNotFoundException();
 
-            var userMember = await _context.Members.SingleOrDefaultAsync(x => x.UserId == user.Id);
-            if (userMember != null && userMember.ClanRole == ClanRole.ClanLeader)
-                throw new ToggleBanException(Resources.Error_ToggleBanException_ClanLeader);
+            var userMembers = _context.Members.Where(x => x.UserId == userId);
+            foreach(var member in userMembers)
+            {
+                if (member.ClanRole == ClanRole.ClanLeader)
+                    throw new ToggleBanException(Resources.Error_ToggleBanException_ClanLeader);
+            }            
 
             if (user.Id == sessionGuid)
                 throw new ToggleBanException(Resources.Error_ToggleBanException_Self);
