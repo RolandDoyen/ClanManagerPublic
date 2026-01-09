@@ -1,0 +1,40 @@
+﻿@model ClanManager.WEB.Models.User.UserFormViewModel
+@using ClanManager.Core.Resources
+
+@{
+    ViewData["Title"] = "User Login";
+}
+
+@if (TempData["ErrorMessage"] != null)
+{
+    <div class="alert alert-danger">
+        @TempData["ErrorMessage"]
+    </div>
+}
+
+<form asp-action="Login" method="post" class="p-4 border rounded shadow-sm bg-light my-form">
+    <h3 class="mb-4 text-center">@Resources.Login</h3>
+
+    <div asp-validation-summary="ModelOnly" class="alert alert-danger"></div>
+
+    <div class="mb-3">
+        <label class="form-label">@Resources.User_Email</label>
+        <input asp-for="Email" class="form-control" placeholder="@Resources.Enter_User_Email" />
+        <div asp-validation-for="Username" class="text-danger mt-1"></div>
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="Password" class="form-label">@Resources.Password</label>
+        <div class="input-group">
+            <input asp-for="Password" class="form-control" type="password" placeholder="@Resources.Enter_Password" id="passwordInput" />
+            <button type="button" class="btn btn-outline-secondary" onclick="togglePassword()">
+                <i class="bi bi-eye" id="toggleIcon"></i>
+            </button>
+        </div>
+        <span asp-validation-for="Password" class="text-danger mt-1"></span>
+    </div>
+
+    <div class="d-grid">
+        <button type="submit" class="btn btn-primary btn-lg">@Resources.Login</button>
+    </div>
+</form>

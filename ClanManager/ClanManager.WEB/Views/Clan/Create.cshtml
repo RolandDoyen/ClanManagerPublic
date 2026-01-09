@@ -1,0 +1,40 @@
+﻿@model ClanManager.WEB.Models.Clan.ClanViewModel
+@using ClanManager.Core.Resources
+
+@{
+    ViewData["Title"] = "Clan Create";
+}
+
+@if (TempData["ErrorMessage"] != null)
+{
+    <div class="alert alert-danger">
+        @TempData["ErrorMessage"]
+    </div>
+}
+
+<form asp-action="Create" method="post" class="p-4 border rounded shadow-sm bg-light my-form">
+    <h3 class="mb-4 text-center">@Resources.Create_Clan</h3>
+
+    <div asp-validation-summary="ModelOnly" class="alert alert-danger"></div>
+
+    <div class="mb-3">
+        <label asp-for="Name" class="form-label">@Resources.Name</label>
+        <input asp-for="Name" class="form-control" placeholder="@Resources.Enter_Clan_Name" />
+        <span asp-validation-for="Name" class="text-danger mt-1"></span>
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="Tag" class="form-label">@Resources.Tag</label>
+        <input asp-for="Tag" class="form-control" placeholder="@Resources.Enter_Clan_Tag" />
+        <span asp-validation-for="Tag" class="text-danger mt-1"></span>
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="Description" class="form-label">@Resources.Description</label>
+        <input asp-for="Description" class="form-control" placeholder="@Resources.Enter_Clan_Description" />
+    </div>
+
+    <div class="d-grid">
+        <button type="submit" class="btn btn-primary btn-lg">@Resources.Button_Create</button>
+    </div>
+</form>

@@ -1,0 +1,85 @@
+﻿@model ClanManager.WEB.Models.Clan.ClanListViewModel
+@using ClanManager.Core.Resources
+
+@{
+    ViewData["Title"] = "Clan List";
+}
+
+@if (TempData["ErrorMessage"] != null)
+{
+    <div class="alert alert-danger">
+        @TempData["ErrorMessage"]
+    </div>
+}
+@if (TempData["SuccessMessage"] != null)
+{
+    <div class="alert alert-success">
+        @TempData["SuccessMessage"]
+    </div>
+}
+
+<div class="d-flex justify-content-between align-items-center mb-3">
+    <div>
+        <a asp-action="List" asp-route-activeOnly="true"
+           class="btn @(Model.ActiveOnly && !Model.MyClansOnly ? "btn-primary" : "btn-light") me-2">
+            @Resources.Active_Clans
+        </a>
+        <a asp-action="List" asp-route-activeOnly="false"
+           class="btn @(!Model.ActiveOnly && !Model.MyClansOnly ? "btn-primary" : "btn-light")">
+            @Resources.All_Clans
+        </a>
+        @if (Model.IsLogedIn)
+        {
+            <a asp-action="List" asp-route-myClansOnly="true"
+               class="btn @(Model.MyClansOnly ? "btn-primary" : "btn-light")">
+                @Resources.MyClans
+            </a>            
+        }
+    </div>
+
+    <div>
+        @if (Model.IsLogedIn)
+        {
+            <a asp-action="Create" asp-controller="Clan" class="btn btn-primary">
+                @Resources.Create_Clan
+            </a>
+        }
+        else
+        {
+            <a asp-action="Login" asp-controller="User" class="btn btn-danger">
+                @Resources.Login
+            </a>
+        }
+    </div>
+</div>
+
+
+@if (Model.Clans.Any() == true)
+{
+    <table class="table table-hover table-striped table-bordered align-middle">
+        <thead class="table-dark">
+            <tr>
+                <th scope="col">Clan</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var clan in Model.Clans)
+            {
+                var rowClass = clan.IsActive ? "" : "table-warning";
+                <tr class="@rowClass">
+                    <td>
+                        <a asp-action="Detail" asp-route-id="@clan.Id" class="text-decoration-none text-primary fw-bold">
+                            @clan.Name [@clan.Tag]
+                        </a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+else
+{
+    <div class="alert alert-info" role="alert">
+        @Resources.No_Clan_Available
+    </div>
+}

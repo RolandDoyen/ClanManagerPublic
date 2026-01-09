@@ -1,0 +1,50 @@
+# === Visual Studio ===
+.vs/
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+
+# === Build results ===
+[Bb]in/
+[Oo]bj/
+[Ll]og/
+[Ll]ogs/
+
+# === Visual Studio Code ===
+.vscode/
+
+# === JetBrains Rider ===
+.idea/
+*.sln.iml
+
+# === Test results ===
+TestResult*/
+*.TestResults/
+*.trx
+
+# === NuGet ===
+*.nupkg
+*.snupkg
+*.nuspec
+packages/
+.nuget/
+project.lock.json
+
+# === ASP.NET Core ===
+appsettings.*.json
+secrets.json
+.env
+.env.*
+
+# === Copilot & temp files ===
+.vs/ClanManager/CopilotIndices/
+*.vsidx
+
+# === Misc ===
+*.swp
+*.tmp
+*.bak
+*.log
+*.DS_Store
+Thumbs.db

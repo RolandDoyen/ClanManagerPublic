@@ -1,0 +1,75 @@
+﻿@using ClanManager.Core.Resources
+@using ClanManager.WEB.Services.Interfaces
+@inject ISessionService SessionService
+
+@{
+    ViewData["Title"] = "Clan Manager";
+}
+
+@if (TempData["ErrorMessage"] != null)
+{
+    <div class="alert alert-danger">
+        @TempData["ErrorMessage"]
+    </div>
+}
+@if (SessionService.IsUserBanned())
+{
+    <div class="alert alert-danger">
+        @ClanManager.Core.Resources.Resources.User_IsBanned
+    </div>
+}
+@if (TempData["SuccessMessage"] != null)
+{
+    <div class="alert alert-success">
+        @TempData["SuccessMessage"]
+    </div>
+}
+
+
+<div class="container mt-4">
+
+    <h1 class="text-center mb-4">@Resources.Index_Title</h1>
+    <p>@Html.Raw(Resources.Index_Description)</p>
+
+    <section class="section">
+        <h2>@Resources.Index_Main_Features</h2>
+
+        <h3>@Resources.Index_UserSide</h3>
+        <ul>
+            <li>@Html.Raw(Resources.Index_UserSide_Connection)</li>
+            <li>@Html.Raw(Resources.Index_UserSide_Admin)</li>
+        </ul>
+        <p></p>
+
+        <h3>@Resources.Index_ClanSide</h3>
+        <ul>
+            <li>@Html.Raw(Resources.Index_ClanSide_You)</li>
+            <li>@Html.Raw(Resources.Index_ClanSide_Users)</li>
+            <li>@Html.Raw(Resources.Index_ClanSide_Leaders)</li>
+        </ul>
+    </section>
+
+    <section class="section">
+        <h2>@Resources.Index_TestAccounts</h2>
+        <ul>
+            <li><strong>superadmin@example.com</strong> / superadmin</li>
+            <li><strong>admin@example.com</strong> / admin</li>
+            <li><strong>user@example.com</strong> / user</li>
+        </ul>
+
+        <p>@Html.Raw(@Resources.Index_OtherAccounts_Text)</p>
+    </section>
+
+    <section class="section">
+        <h2>@Resources.Index_Doc</h2>
+        <p>@Html.Raw(Resources.Index_Doc_Txt)</p>
+    </section>
+
+    <section class="section warning">
+        <h2>@Resources.Index_Attention</h2>
+        <p>@Html.Raw(Resources.Index_Attention_Text)</p>
+        <form asp-controller="Admin" asp-action="ResetDatabase" method="post">
+            <button type="submit" class="btn btn-danger">@Resources.Index_Attention_Reset</button>
+        </form>
+    </section>
+</div>
